@@ -28,3 +28,14 @@ setup_registry:
   registry_user: "admin"
   registry_password: "admin"
 machineconfig_path: ../machineconfig
+packages:
+  - bind
+  - bind-utils
+  - firewalld
+  - haproxy
+  - httpd
+  - vim
+  - bash-completion
+  - libselinux-python
+  - podman
+  - nfs-utils
