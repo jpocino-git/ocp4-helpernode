@@ -47,17 +47,17 @@ dhcp:
   netmaskid: "255.255.255.0"
 bootstrap:
   name: "bootstrap"
-  ipaddr: "10.0.2.170"
+  ipaddr: "10.0.2.155"
   macaddr: "00:50:56:01:72:67"
 masters:
   - name: "master1"
-    ipaddr: "10.0.2.152"
+    ipaddr: "10.0.2.150"
     macaddr: "00:50:56:01:ee:2e"
   - name: "master2"
-    ipaddr: "10.0.2.150"
+    ipaddr: "10.0.2.151"
     macaddr: "00:50:56:01:ee:22c3"
   - name: "master3"
-    ipaddr: "10.0.2.151"
+    ipaddr: "10.0.2.152"
     macaddr: "00:50:56:01:b7:7e"
 workers:
   - name: "worker1"
