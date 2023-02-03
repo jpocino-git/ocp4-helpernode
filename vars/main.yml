@@ -3,13 +3,13 @@ ssh_gen_key: true
 ipi: false
 baremetal: true
 staticips: true
-force_ocp_download: false
-remove_old_config_files: false
-ocp_bios: "https://mirror.openshift.com/pub/openshift-v4/dependencies/rhcos/4.9/4.9.0/rhcos-4.9.0-x86_64-live-rootfs.x86_64.img"
-ocp_initramfs: "https://mirror.openshift.com/pub/openshift-v4/dependencies/rhcos/4.9/4.9.0/rhcos-4.9.0-x86_64-live-initramfs.x86_64.img"
-ocp_install_kernel: "https://mirror.openshift.com/pub/openshift-v4/dependencies/rhcos/4.9/4.9.0/rhcos-4.9.0-x86_64-live-kernel-x86_64"
-ocp_client: "https://mirror.openshift.com/pub/openshift-v4/clients/ocp/4.9.18/openshift-client-linux-4.9.18.tar.gz"
-ocp_installer: "https://mirror.openshift.com/pub/openshift-v4/clients/ocp/4.9.18/openshift-install-linux-4.9.18.tar.gz"
+force_ocp_download: true
+remove_old_config_files: true
+ocp_bios: "https://mirror.openshift.com/pub/openshift-v4/x86_64/dependencies/rhcos/latest/rhcos-live-rootfs.x86_64.img"
+ocp_initramfs: "https://mirror.openshift.com/pub/openshift-v4/x86_64/dependencies/rhcos/latest/rhcos-live-initramfs.x86_64.img"
+ocp_install_kernel: "https://mirror.openshift.com/pub/openshift-v4/x86_64/dependencies/rhcos/latest/rhcos-live-kernel-x86_64"
+ocp_client: "https://mirror.openshift.com/pub/openshift-v4/x86_64/clients/ocp/4.11.22/openshift-client-linux-4.11.22.tar.gz"
+ocp_installer: "https://mirror.openshift.com/pub/openshift-v4/x86_64/clients/ocp/4.11.22/openshift-install-linux-4.11.22.tar.gz"
 helm_source: "https://get.helm.sh/helm-v3.6.3-linux-amd64.tar.gz"
 download_imgs: false
 chars: (\\_|\\$|\\\|\\/|\\=|\\)|\\(|\\&|\\^|\\%|\\$|\\#|\\@|\\!|\\*)
@@ -28,17 +28,6 @@ setup_registry:
   registry_user: "admin"
   registry_password: "admin"
 machineconfig_path: ../machineconfig
-packages:
-  - bind
-  - bind-utils
-  - firewalld
-  - haproxy
-  - httpd
-  - vim
-  - bash-completion
-  - libselinux-python
-  - podman
-  - nfs-utils
 disk: vda
 helper:
   name: "bastion"
@@ -52,8 +41,8 @@ dhcp:
   router: "10.0.2.1"
   bcast: "10.0.2.255"
   netmask: "255.255.255.0"
-  poolstart: "10.0.2.10"
-  poolend: "10.0.2.30"
+  poolstart: "10.0.2.160"
+  poolend: "10.0.2.180"
   ipid: "10.0.2.0"
   netmaskid: "255.255.255.0"
 bootstrap:

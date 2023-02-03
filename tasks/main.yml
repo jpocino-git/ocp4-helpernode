@@ -5,6 +5,7 @@
   vars_files:
     - ../vars/main.yml
     - ../vars/ports.yml
+    - ../vars/packages.yml
   handlers:
   - import_tasks: ../handlers/main.yml
 
@@ -23,7 +24,7 @@
     import_tasks: generate_ssh_keys.yaml
     when: ssh_gen_key
 
-  - name: set setup facts
+  - name: set setup facts 
     include: set_facts_.yaml
 
   - name: Install needed packages
@@ -31,11 +32,11 @@
       name: "{{ packages }}"
       state: present
 
-  # - name: Install packages for DHCP/PXE install
-  #   package:
-  #     name: "{{ dhcppkgs }}"
-  #     state: present
-  #   when: not staticips
+  - name: Install packages for DHCP/PXE install
+    package:
+      name: "{{ dhcppkgs }}"
+      state: present
+    when: not staticips
 
   - name: Install additional package for Intel platforms
     package:
@@ -47,21 +48,21 @@
     import_tasks: remove_old_config_files.yaml
     when: remove_old_config_files
 
-  # - name: Write out dhcp file
-  #   template:
-  #     src: ../templates/dhcpd.conf.j2
-  #     dest: /etc/dhcp/dhcpd.conf
-  #   notify:
-  #     - restart dhcpd
-  #   when: not staticips and not uefi
+  - name: Write out dhcp file
+    template:
+      src: ../templates/dhcpd.conf.j2
+      dest: /etc/dhcp/dhcpd.conf
+    notify:
+      - restart dhcpd
+    when: not staticips and not uefi
 
-  # - name: Write out dhcp file (UEFI)
-  #   template:
-  #     src: ../templates/dhcpd-uefi.conf.j2
-  #     dest: /etc/dhcp/dhcpd.conf
-  #   notify:
-  #     - restart dhcpd
-  #   when: not staticips and uefi
+  - name: Write out dhcp file (UEFI)
+    template:
+      src: ../templates/dhcpd-uefi.conf.j2
+      dest: /etc/dhcp/dhcpd.conf
+    notify:
+      - restart dhcpd
+    when: not staticips and uefi
 
   - name: Setup named configuration files
     block:
