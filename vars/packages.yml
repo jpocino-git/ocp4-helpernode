@@ -25,3 +25,5 @@ critical_services:
 dhcppkgs:
   - dhcp
   - tftp-server
+owner: nfsnobody
+group: nfsnobody
